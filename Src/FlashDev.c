@@ -71,11 +71,11 @@ struct FlashDevice {
 
 struct FlashDevice const FlashDevice __attribute__ ((section ("DevDscr"))) = {
   0x0101,                         // Algo version. Must be == 0x0101
-  { "STM32G4 internal flash" },  // Flash device name
+  { "STM32G4 internal flash" },   // Flash device name
   1,                              // Flash device type. Must be == 1
   0x08000000,                     // Flash base address
   0x00080000,                     // Total flash device size in Bytes
-  512,                            // Page Size (Will be passed as <NumBytes> to ProgramPage(). A multiple of this is passed as <NumBytes> to SEGGER_OPEN_Program() to program moer than 1 page in 1 RAMCode call, speeding up programming).
+  2048,                           // Page Size (Will be passed as <NumBytes> to ProgramPage(). A multiple of this is passed as <NumBytes> to SEGGER_OPEN_Program() to program moer than 1 page in 1 RAMCode call, speeding up programming).
   0,                              // Reserved, should be 0
   0xFF,                           // Flash erased value
   100,                            // Program page timeout in ms

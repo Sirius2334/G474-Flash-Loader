@@ -39,6 +39,10 @@
  <Watch4>
   <Watches active="0" update="Never"/>
  </Watch4>
- <Files/>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="587" useTextEdit="1" path="Src/FlashPrg.c" left="0" selected="1" top="554" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="3" y="95" useTextEdit="1" path="Src/FlashDev.c" left="0" top="56" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="112" useTextEdit="1" path="Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h" left="0" top="89" codecName="Default"/>
+ </Files>
  <EMStudioWindow activeProject="Flashloader" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="E:/Project/platformLearning/st/G474RE/FlashLoader_G4/Drivers/STM32G4xx_HAL_Driver/Src" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
