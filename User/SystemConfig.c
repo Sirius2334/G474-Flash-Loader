@@ -97,4 +97,41 @@ uint32_t GetPage(uint32_t Addr)
   return page;
 }
 
+/**
+  * @brief  Gets the bank of a given address
+  * @param  Addr: Address of the FLASH Memory
+  * @retval The bank of a given address
+  */
+uint32_t GetBank(uint32_t Addr)
+{
+  uint32_t bank = 0;
+
+  if (READ_BIT(SYSCFG->MEMRMP, SYSCFG_MEMRMP_FB_MODE) == 0)
+  {
+    /* No Bank swap */
+    if (Addr < (FLASH_BASE + FLASH_BANK_SIZE))
+    {
+      bank = FLASH_BANK_1;
+    }
+    else
+    {
+      bank = FLASH_BANK_2;
+    }
+  }
+  else
+  {
+    /* Bank swap */
+    if (Addr < (FLASH_BASE + FLASH_BANK_SIZE))
+    {
+      bank = FLASH_BANK_2;
+    }
+    else
+    {
+      bank = FLASH_BANK_1;
+    }
+  }
+
+  return bank;
+}
+
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
