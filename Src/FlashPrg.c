@@ -76,8 +76,8 @@ Purpose : Implementation of RAMCode template
  **********************************************************************
  */
 
-#define PAGE_SIZE_SHIFT (11)   // Smallest amount of data that can be programmed. <PageSize> = 2 ^ Shift. Shift = 11 => <PageSize> = 2^11 = 2048 bytes
-#define SECTOR_SIZE_SHIFT (16) // Flashes with uniform sectors only. <SectorSize> = 2 ^ Shift. Shift = 15 => <SectorSize> = 2 ^ 15 = 32768 bytes
+#define PAGE_SIZE_SHIFT (11)   // Smallest amount of data that can be programmed. <PageSize> = 2 ^ Shift. Shift = 11 => <PageSize> = 2 ^ 11 = 2048 bytes
+#define SECTOR_SIZE_SHIFT (11) // Flashes with uniform sectors only. <SectorSize> = 2 ^ Shift. Shift = 11 => <SectorSize> = 2 ^ 11 = 2048 bytes
 
 //
 // Default definitions for optional functions if not compiled in
@@ -255,9 +255,8 @@ int EraseSector(U32 SectorAddr)
   //
   // Erase sector code
   //
-  (void)SectorAddr;
   _FeedWatchdog();
-  uint32_t FirstPage = 0, PageError = 0;
+  uint32_t BankNum, FirstPage = 0, PageError = 0;
 
   /* Clear OPTVERR bit set on virgin samples */
   __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_OPTVERR);
@@ -267,13 +266,14 @@ int EraseSector(U32 SectorAddr)
 
   /* Get the 1st page to erase */
   FirstPage = GetPage(SectorAddr);
+  BankNum = GetBank(SectorAddr);
 
   /*Variable used for Erase procedure*/
   FLASH_EraseInitTypeDef EraseInitStruct;
 
   /* Fill EraseInit structure*/
   EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
-  EraseInitStruct.Banks = FLASH_BANK_1;
+  EraseInitStruct.Banks = BankNum;
   EraseInitStruct.Page = FirstPage;
   EraseInitStruct.NbPages = 1;
 
@@ -315,7 +315,7 @@ int ProgramPage(U32 DestAddr, U32 NumBytes, U8 *pSrcBuff)
   uint64_t *p = (uint64_t *)pSrcBuff;
 
   endAddress = DestAddr + NumBytes;
-  NumBytes = (NumBytes + 255) & ~255; // Adjust size for 256 bytes
+  // NumBytes = (NumBytes + 255) & ~255; // Adjust size for 256 bytes, write 256 bytes everytime
 
   while (DestAddr < endAddress)
   {
@@ -504,11 +504,12 @@ int EraseChip(void)
 
   /* Fill EraseInit structure*/
   EraseInitStruct.TypeErase = FLASH_TYPEERASE_MASSERASE;
-  EraseInitStruct.Banks = FLASH_BANK_1;
+  EraseInitStruct.Banks = FLASH_BANK_BOTH;
 
   if (HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError) != HAL_OK)
+    return 1;
 
-    return 0;
+  return 0;
 }
 #endif
 
@@ -578,7 +579,7 @@ int SEGGER_OPEN_Erase(U32 SectorAddr, U32 SectorIndex, U32 NumSectors)
 {
   /* This function will still be called every erasing, can't accelerate. */
   int r;
-  uint32_t PAGEError = 0;
+  uint32_t PageError = 0;
 
   /*Variable used for Erase procedure*/
   FLASH_EraseInitTypeDef EraseInitStruct;
@@ -587,13 +588,11 @@ int SEGGER_OPEN_Erase(U32 SectorAddr, U32 SectorIndex, U32 NumSectors)
   EraseInitStruct.TypeErase = FLASH_TYPEERASE_MASSERASE;
   EraseInitStruct.Banks = FLASH_BANK_BOTH;
 
-  // uart_printf(&huart1, "[earse]: Addr: 0x%x, SectorIndex: %d, NumSectors: %d", SectorAddr, SectorIndex, NumSectors);
-  // uart_printf(&huart1, "earse bank: %s", SectorAddr < ADDR_FLASH_SECTOR_0_BANK2 ? "bank1" : "bank2");
-
-  if (HAL_FLASHEx_Erase(&EraseInitStruct, &PAGEError) != HAL_OK)
+  if (HAL_FLASHEx_Erase(&EraseInitStruct, &PageError) != HAL_OK)
   {
     return 1;
   }
+  return 0;
 }
 #endif
 

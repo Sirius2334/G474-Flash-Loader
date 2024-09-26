@@ -1,11 +1,11 @@
 Output/Release/Obj/Flashloader/FlashPrg.o: \
- D:\Software\STM32\G474RE\G474-Flash-Loader\Src\FlashPrg.c \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/stddef.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL_ConfDefaults.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL_Conf.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL_Arm_Conf.h \
- D:\Software\STM32\G474RE\G474-Flash-Loader\Src\FlashOS.h \
+ E:\Project\platformLearning\st\G474RE\FlashLoader_G4\Src\FlashPrg.c \
+ D:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/stddef.h \
+ D:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL.h \
+ D:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL_ConfDefaults.h \
+ D:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL_Conf.h \
+ D:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/__SEGGER_RTL_Arm_Conf.h \
+ E:\Project\platformLearning\st\G474RE\FlashLoader_G4\Src\FlashOS.h \
  User/SystemConfig.h Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h \
  Core/Inc/stm32g4xx_hal_conf.h \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h \
@@ -13,7 +13,7 @@ Output/Release/Obj/Flashloader/FlashPrg.o: \
  Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h \
  Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h \
  Drivers/CMSIS/Include/core_cm4.h \
- C:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/stdint.h \
+ D:/Program\ Files/SEGGER/SEGGER\ Embedded\ Studio\ 8.14a/include/stdint.h \
  Drivers/CMSIS/Include/cmsis_version.h \
  Drivers/CMSIS/Include/cmsis_compiler.h Drivers/CMSIS/Include/cmsis_gcc.h \
  Drivers/CMSIS/Include/mpu_armv7.h \

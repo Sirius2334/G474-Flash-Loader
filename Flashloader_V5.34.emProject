@@ -42,13 +42,14 @@
       speed="1000" />
     <configuration
       Name="Debug"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32G474xx;FLASH_OPTR_DBANK"
       c_user_include_directories=".;Core/Inc;Drivers/STM32G4xx_HAL_Driver/Inc;Drivers/STM32G4xx_HAL_Driver/Inc/Legacy;Drivers/CMSIS/Device/ST/STM32G4xx/Include;Drivers/CMSIS/Include;User"
       gcc_optimization_level="Level 0" />
     <configuration
       Name="Release"
       arm_architecture="v7EM"
       arm_core_type="Cortex-M4"
-      c_preprocessor_definitions="USE_HAL_DRIVER;STM32G474xx"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32G474xx;FLASH_OPTR_DBANK"
       c_user_include_directories=".;Core/Inc;Drivers/STM32G4xx_HAL_Driver/Inc;Drivers/STM32G4xx_HAL_Driver/Inc/Legacy;Drivers/CMSIS/Device/ST/STM32G4xx/Include;Drivers/CMSIS/Include;User" />
     <folder Name="Drivers">
       <file file_name="Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c">

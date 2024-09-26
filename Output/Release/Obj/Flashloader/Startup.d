@@ -1,2 +1,2 @@
 Output/Release/Obj/Flashloader/Startup.o: \
- D:\Software\STM32\G474RE\G474-Flash-Loader\Src\Startup.s
+ E:\Project\platformLearning\st\G474RE\FlashLoader_G4\Src\Startup.s
